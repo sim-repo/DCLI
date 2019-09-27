@@ -12,6 +12,7 @@ import java.util.HashSet;
 @JsonPropertyOrder({"clazz"})
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public interface IGetter extends Serializable {
+    Integer getId();
     @JsonGetter("clazz")
     String getClazz();
     String getFuncParamByWebParam(String webParam);

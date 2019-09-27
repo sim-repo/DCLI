@@ -30,13 +30,9 @@ public class PersistenceConfig {
         dataSource.setUrl(Preconditions.checkNotNull(env.getProperty("mysql.jdbc.url")));
         dataSource.setUsername(Preconditions.checkNotNull(env.getProperty("mysql.user")));
         dataSource.setPassword(Preconditions.checkNotNull(env.getProperty("mysql.pass")));
-        try (Connection con = dataSource.getConnection();
-             CallableStatement cstmt = con.prepareCall("{call sp_get_uids}");) {
-            ResultSet rs = cstmt.executeQuery();
+        try (Connection con = dataSource.getConnection()){
             System.out.println("MY SQL RESULT:");
-            while (rs.next()) {
-                System.out.println(rs.getString("id") + ", " + rs.getString("uid"));
-            }
+
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -52,13 +48,8 @@ public class PersistenceConfig {
         ds.setUser(Preconditions.checkNotNull(env.getProperty("mssql.user")));
         ds.setPassword(Preconditions.checkNotNull(env.getProperty("mssql.pass")));
         JdbcTemplate template = new JdbcTemplate(ds);
-        try (Connection con = ds.getConnection();
-            CallableStatement cstmt = con.prepareCall("{call dbo.get_test}");) {
-            ResultSet rs = cstmt.executeQuery();
-            System.out.println("SQL SERVER RESULT:");
-            while (rs.next()) {
-                System.out.println(rs.getString("id") + ", " + rs.getString("driver-class-name"));
-            }
+        try (Connection con = ds.getConnection()){
+          System.out.println("ok");
         }
         catch (SQLException e) {
             e.printStackTrace();

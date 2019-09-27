@@ -22,6 +22,10 @@ public abstract class AGetter implements IGetter{
     public Boolean isAllAccess = false;
     public HashSet<String> roles;
 
+    @Override
+    public Integer getId() {
+        return id;
+    }
 
     @Override
     public String getExecutedFunctionName() {

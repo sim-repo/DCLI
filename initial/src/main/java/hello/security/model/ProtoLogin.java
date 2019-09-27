@@ -9,4 +9,13 @@ public class ProtoLogin implements Serializable {
     public Integer expireInDays;
     public String password;
 
+    @Override
+    public String toString() {
+        return "ProtoLogin{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", expireInDays=" + expireInDays +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

@@ -215,11 +215,9 @@ public class ReadController {
     @RequestMapping(value = "conf/addToken", method = RequestMethod.POST,  produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody String addToken(@RequestBody String body){
 
-        ObjectMapper mapper = new ObjectMapper();
-        HashMap<Integer, String> map = new HashMap<>();
-
         try {
-            map = mapper.readValue(body, new TypeReference<Map<Integer, String>>() {}); //tokenByLoginId
+            ObjectMapper mapper = new ObjectMapper();
+            HashMap<Integer, String> map = mapper.readValue(body, new TypeReference<Map<Integer, String>>() {}); //tokenByLoginId
             myRedisson.pub_addToken(map);
             System.out.println(map);
         }catch (Exception e) {
@@ -240,8 +238,6 @@ public class ReadController {
         }catch (Exception e) {
 
         }
-
-        String[] ids = body.split(",");
         int[] array = Arrays.asList(body).stream().mapToInt(Integer::parseInt).toArray();
         ArrayList<Integer> arr = (ArrayList) Arrays.asList(array);
         myRedisson.pub_removeToken(arr);
@@ -285,11 +281,9 @@ public class ReadController {
     @RequestMapping(value = "conf/addLoginRoles", method = RequestMethod.POST,  produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody String addLoginRoles(@RequestBody String body){
 
-        ObjectMapper mapper = new ObjectMapper();
-        HashMap<String, String> map = new HashMap<>();
-
         try {
-            map = mapper.readValue(body, new TypeReference<Map<Integer, String>>() {}); //tokenByLoginId
+            ObjectMapper mapper = new ObjectMapper();
+            HashMap<Integer, String> map = mapper.readValue(body, new TypeReference<Map<Integer, String>>() {}); //tokenByLoginId
             myRedisson.pub_addLoginRoles(map);
             System.out.println(map);
         }catch (Exception e) {
@@ -300,12 +294,9 @@ public class ReadController {
 
     @RequestMapping(value = "conf/removeLoginRoles", method = RequestMethod.POST,  produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody String removeLoginRoles(@RequestBody String body){
-
-        ObjectMapper mapper = new ObjectMapper();
-        HashMap<String, String> map = new HashMap<>();
-
         try {
-            map = mapper.readValue(body, new TypeReference<Map<Integer, String>>() {}); //tokenByLoginId
+            ObjectMapper mapper = new ObjectMapper();
+            HashMap<Integer, String> map = mapper.readValue(body, new TypeReference<Map<Integer, String>>() {}); //tokenByLoginId
             myRedisson.pub_removeLoginRoles(map);
             System.out.println(map);
         }catch (Exception e) {
@@ -316,12 +307,9 @@ public class ReadController {
 
     @RequestMapping(value = "conf/addGetterRoles", method = RequestMethod.POST,  produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody String addGetterRoles(@RequestBody String body){
-
-        ObjectMapper mapper = new ObjectMapper();
-        HashMap<String, String> map = new HashMap<>();
-
         try {
-            map = mapper.readValue(body, new TypeReference<Map<Integer, String>>() {}); //tokenByLoginId
+            ObjectMapper mapper = new ObjectMapper();
+            HashMap<Integer, String> map = mapper.readValue(body, new TypeReference<Map<Integer, String>>() {}); //tokenByLoginId
             myRedisson.pub_addGetterRoles(map);
             System.out.println(map);
         }catch (Exception e) {
@@ -332,12 +320,9 @@ public class ReadController {
 
     @RequestMapping(value = "conf/removeGetterRoles", method = RequestMethod.POST,  produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody String removeGetterRoles(@RequestBody String body){
-
-        ObjectMapper mapper = new ObjectMapper();
-        HashMap<String, String> map = new HashMap<>();
-
         try {
-            map = mapper.readValue(body, new TypeReference<Map<Integer, String>>() {}); //tokenByLoginId
+            ObjectMapper mapper = new ObjectMapper();
+            HashMap<Integer, String> map = mapper.readValue(body, new TypeReference<Map<Integer, String>>() {}); //tokenByLoginId
             myRedisson.pub_removeGetterRoles(map);
             System.out.println(map);
         }catch (Exception e) {
