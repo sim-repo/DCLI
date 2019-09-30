@@ -1,4 +1,4 @@
-package hello.redis;
+package hello.pubsub;
 
 import hello.model.connectors.JdbConnector;
 import hello.model.getter.IGetter;
@@ -12,12 +12,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component("myRedisson")
-public class MyRedisson {
+@Component("pubSub")
+public class PubSub {
 
     RedissonClient client;
 
-    public MyRedisson() {
+    public PubSub() {
         Config config = new Config();
         config.useSingleServer()
                 .setAddress("redis://127.0.0.1:6379");
